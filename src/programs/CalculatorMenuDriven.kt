@@ -32,9 +32,8 @@ fun main () {
     } while (option != 5)
 }
 
-fun sum(a: Int, b: Int): Int {
-    return a + b;
-}
+// Single-expression function
+fun sum(a: Int, b: Int): Int = a + b
 
 fun subtract(a: Int, b: Int): Int {
     return a - b;
