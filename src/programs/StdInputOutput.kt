@@ -1,3 +1,5 @@
+package programs
+
 fun main() {
     println("Enter your name: ")
     val name: String = readln()
