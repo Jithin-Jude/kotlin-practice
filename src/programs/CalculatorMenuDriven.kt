@@ -5,6 +5,9 @@ fun main () {
     var num1: Int
     var num2: Int
 
+    salute()
+    salute("Jithin")
+
     do {
 
         println("Choose your operation:\n===================\n")
@@ -45,4 +48,9 @@ fun product(a: Int, b: Int): Int {
 
 fun div(a: Int, b: Int): Int {
     return a / b;
+}
+
+// Function with Default arguments
+fun salute(name: String = "Guest") {
+    println("Hello $name");
 }
