@@ -1,4 +1,4 @@
-package programs
+package M2.test_programs
 
 // TestClassObjectsConsturctors
 
