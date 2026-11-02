@@ -12,6 +12,8 @@ fun main () {
     b.start()
     b.stop()
 
+    println("Brand: ${b.brand}")
+
 }
 
 class BikeU1: VehicleU1() {
@@ -34,6 +36,8 @@ class CarU1: VehicleU1() {
 
 abstract class VehicleU1() {
     abstract val name: String
+
+    val brand: String = "Suzuki"
 
     abstract fun start()
 
