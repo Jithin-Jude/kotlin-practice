@@ -1,6 +1,6 @@
-package M2.test_programs
+package M2.practice_problems
 
-// ExampleInterface
+// ExampleInterface // Payment System
 
 fun main() {
     val upi = UpiPayment()
