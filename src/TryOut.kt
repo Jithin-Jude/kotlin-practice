@@ -1,5 +1,4 @@
 // TryOut
-
-fun main () {
+fun main() {
 
 }
