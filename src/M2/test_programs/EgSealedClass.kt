@@ -17,9 +17,6 @@ fun checkResponse(state: DataState) {
         is DataState.Error -> {
             println("Error ${state.message}")
         }
-        else -> {
-
-        }
     }
 }
 
