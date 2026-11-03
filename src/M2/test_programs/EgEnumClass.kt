@@ -4,6 +4,10 @@ package M2.test_programs
 
 fun main(){
     val today = DaysOfWeek.TUE
+    println(DaysOfWeek.values())
+    println(DaysOfWeek.entries)
+    println(DaysOfWeek.valueOf("Fri"))
+    println(DaysOfWeek.entries.contains(DaysOfWeek.Fri))
 
     when(today) {
         DaysOfWeek.MON -> {
@@ -12,6 +16,8 @@ fun main(){
 
         DaysOfWeek.TUE -> {
             println("Today is TUESDAY")
+            println(today.name)
+            println(today.ordinal)
         }
 
         DaysOfWeek.WED -> {
@@ -22,7 +28,7 @@ fun main(){
             println("Today is THURSDAY")
         }
 
-        DaysOfWeek.FRI -> {
+        DaysOfWeek.Fri -> {
             println("Today is FRIDAY")
         }
 
@@ -36,4 +42,4 @@ fun main(){
     }
 }
 
-enum class DaysOfWeek {MON, TUE, WED, THU, FRI, SAT, SUN}
+enum class DaysOfWeek {MON, TUE, WED, THU, Fri, SAT, SUN}
