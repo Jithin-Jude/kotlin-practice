@@ -18,13 +18,16 @@ class UpiPayment: Payment {
     }
 }
 
-class CreditCardPayment: Payment {
+class CreditCardPayment() : Payment {
     override fun pay(amount: Int) {
         println("Paid using Credit Card")
     }
 }
 
 interface Payment {
+
+//     val amount: Int get() = 0
+
     fun pay(amount: Int)
 
     fun refund(amount: Int) {
