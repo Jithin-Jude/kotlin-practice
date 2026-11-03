@@ -25,3 +25,9 @@ sealed class DataState {
     data class Success(val data: String): DataState()
     data class Error(val message: String): DataState()
 }
+
+sealed interface Result
+
+object Loading: Result
+data class Success(val data: String): Result
+data class Error(val message: String): Result
