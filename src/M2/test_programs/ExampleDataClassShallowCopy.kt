@@ -11,6 +11,8 @@ fun main() {
 
     c.mList.add("Hi") // updates both
 
+    val (ad, bd, cd) = d // destructuring declaration
+
     println("D => ${d.toString()}")
     println("C => ${c.toString()}")
 
@@ -20,6 +22,4 @@ data class DA(
     var a: String,
     var b: Int,
     var mList: MutableList<String> = mutableListOf("A", "B", "C")
-) {
-
-}
+)
