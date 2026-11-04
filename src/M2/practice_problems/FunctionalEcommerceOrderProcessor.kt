@@ -108,7 +108,7 @@ fun main() {
     println()
 
     //Use fold() to calculate the complete order value.
-    println(cpList.fold(0) {acc, product -> (acc + (product.price * product.quantity)).toInt()})
+    println(cpList.fold(0.0) {acc, product -> acc + (product.price * product.quantity)})
 
     println()
 
