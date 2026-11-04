@@ -114,7 +114,7 @@ fun main() {
 
     //Create reusable functions for discount calculation.
     cpList
-        .map { p -> p.copy(price = discountCalc(p, {dp: Double -> p.price - (p.price * dp/100)})) }
+        .map { p -> p.copy(price = discountCalc(p, {cpPrice: Double, dPercentage: Double -> cpPrice - (cpPrice * dPercentage/100)})) }
         .forEach { discountedProduct ->
             println("${discountedProduct.name} => ${discountedProduct.price}")
         }
@@ -124,10 +124,10 @@ fun main() {
 
 fun discountCalc(
     product: ConsumerProduct,
-    calculateDiscount: (Double) -> Double
+    calculateDiscount: (Double, Double) -> Double
     ): Double {
     val discountPercentage = 10.0
-    return calculateDiscount(discountPercentage)
+    return calculateDiscount(product.price, discountPercentage)
 }
 
 data class ConsumerProduct(
