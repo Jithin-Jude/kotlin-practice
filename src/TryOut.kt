@@ -1,5 +1,1 @@
 // TryOut
-
-fun main() {
-
-}
