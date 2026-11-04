@@ -55,7 +55,7 @@ fun main(){
     println()
 
     // Calculate average salary.
-    println(eList.sumOf { e -> e.salary }/eList.size)
+    println(eList.map { e -> e.salary }.average())
 
     println()
 
