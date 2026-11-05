@@ -22,7 +22,7 @@ fun main() {
             id = 103,
             name = "Aishu",
             email = "aishu@brototype.com",
-            salary = 100000.0,
+            salary = null,
             department = "Chef",
         ),
         CampusEmployee(
@@ -37,7 +37,7 @@ fun main() {
             name = "Nedumaaran",
             email = "nedumaaran@brototype.com",
             salary = 25000.0,
-            department = "Head Chef",
+            department = null,
         ),
     )
 
@@ -50,6 +50,24 @@ fun main() {
     eList.forEach{ e ->
         println("Email: ${e?.email}")
     }
+
+    println()
+
+    // Calculate total salary, treating missing salaries as zero.
+    val totalSalary = eList.fold(0.0) { acc, e -> acc + (e.salary ?: 0.0) }
+    println("Total Salary: $totalSalary")
+
+    println()
+
+    // Display "Unknown Department" when the department is null.
+    eList.forEach { e ->
+        println("${e.name ?: "Unknown Name"} => ${e.department ?: "Unknown Department"}")
+    }
+
+    println()
+
+    // Find the employee with the highest available salary.
+    println(eList.maxBy { e -> e.salary ?: 0.0 })
 }
 
 data class CampusEmployee(
