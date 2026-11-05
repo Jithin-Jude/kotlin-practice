@@ -29,20 +29,20 @@ fun main() {
 
     println()
 
+    // also
+    val resultAlso = s1?.also { s ->
+        s.marks = 90.0
+    }
+    println(resultAlso)
+
+    println()
+
     // run
     val resultRun = s1?.run {
         marks = 85.0
         "Run Done"
     }
     println(resultRun)
-
-    println()
-
-    // also
-    val resultAlso = s1?.also { s ->
-        s.marks = 90.0
-    }
-    println(resultAlso)
 
     println()
 
