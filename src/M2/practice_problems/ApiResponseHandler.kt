@@ -27,7 +27,7 @@ fun handleResponse(response: ApiResponse?) {
             println(response.data?.name ?: "Unknown Name")
             println("${response.data?.address?.city ?: "Unknown City"}, ${response.data?.address?.country ?: "Unknown Country"}")
         } else if (response.status == "ERROR") {
-            println(response.message)
+            println(response.message ?: "Unknown Error")
         } else {
             println("Unknown Response")
         }
