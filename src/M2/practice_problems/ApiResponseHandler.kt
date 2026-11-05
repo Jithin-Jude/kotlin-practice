@@ -23,6 +23,14 @@ fun handleResponse(response: ApiResponse?) {
         println("No response received")
     } else {
         if (response.status == "SUCCESS") {
+//            if (response.data != null) {
+//                with(response.data){
+//                    println(userId ?: "Unknown")
+//                    println(name ?: "Unknown")
+//                    println(address?.city ?: "Unknown")
+//                }
+//            }
+
             println(response.data?.userId)
             println(response.data?.name ?: "Unknown Name")
             println("${response.data?.address?.city ?: "Unknown City"}, ${response.data?.address?.country ?: "Unknown Country"}")
