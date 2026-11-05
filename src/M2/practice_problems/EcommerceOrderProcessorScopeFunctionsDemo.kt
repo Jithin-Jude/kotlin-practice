@@ -45,7 +45,7 @@ fun main(){
     println()
 
     // Use run() to calculate the total order value.
-    val totalOrderValue = order.products?.fold(0.0){acc, product -> acc + (product.price ?: 0.0)}
+    val totalOrderValue = order.products?.fold(0.0){acc, product -> acc + ((product.price ?: 0.0 ) * (product.quantity?.toDouble() ?: 0.0))}
     println( "Total order value:$totalOrderValue")
 
     println()
