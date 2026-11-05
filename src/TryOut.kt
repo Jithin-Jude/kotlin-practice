@@ -1,11 +1,16 @@
 // TryOut
 
 fun main() {
-    var name: String? = "Jithin"
+    val result = "Kotlin"
+        .also {
+            println("A: $it")
+        }
+        .let {
+            it.length
+        }
+        .run {
+            this * 2
+        }
 
-    if(name != null) {
-        println(name.length)
-    } else {
-
-    }
+    println("Result: $result")
 }
