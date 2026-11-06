@@ -10,6 +10,7 @@ fun main() {
     )
 
     // let
+    // Let me transform this value
     val resultLet = s1?.let { s ->
         println(s.id)
         println(s.name)
@@ -22,6 +23,7 @@ fun main() {
     println()
 
     // apply
+    // Apply configurations
     val resultApply = s1?.apply {
         marks = 80.0
     }
@@ -30,6 +32,7 @@ fun main() {
     println()
 
     // also
+    /// Also do something with this object
     val resultAlso = s1?.also { s ->
         s.marks = 90.0
     }
@@ -38,6 +41,7 @@ fun main() {
     println()
 
     // run
+    // Run some code and return its result
     val resultRun = s1?.run {
         marks = 85.0
         "Run Done"
@@ -47,6 +51,7 @@ fun main() {
     println()
 
     // with
+    // With this object, do these operations
     val resultWith = with(s1!!) {
         marks = 90.0
         "With Done"
