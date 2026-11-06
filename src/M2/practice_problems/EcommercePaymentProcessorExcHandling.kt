@@ -22,7 +22,7 @@ fun main() {
     )
 
     listOfPayment.forEach { payment ->
-        payment.processPayment(value = 10.0)
+        payment.processPayment(value = 100.0)
         println()
     }
 }
@@ -45,8 +45,6 @@ class JPayment {
             }
         } catch (e: IllegalArgumentException) {
             throw InvalidAmountException("Invalid amount: $e")
-        } catch (e: Exception) {
-            println("Unknown exception: ${e.message}")
         }
 
         println("Payment validation success.")
@@ -59,9 +57,15 @@ class JPayment {
         try {
             validatePaymentAmount(value = value)
 
-            check(!isPaid) {
+            if(isPaid) {
                 throw PaymentAlreadyCompletedException("Already paid")
             }
+
+            amount += value
+            isPaid = true
+            println("Payment processed.")
+            println("Amount: $amount")
+
         } catch (e: PaymentAlreadyCompletedException) {
             println(e.message)
             return
@@ -71,10 +75,6 @@ class JPayment {
         } finally {
             println("Transaction cleaned up.")
         }
-
-        amount += value
-        println("Payment processed.")
-        println("Amount: $amount")
     }
 }
 
