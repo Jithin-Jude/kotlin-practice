@@ -4,10 +4,10 @@ import M2.practice_problems.student_management_system.model.Student
 
 class StudentRepositoryImpl: StudentRepository {
 
-    val studentList = mutableMapOf<Int, Student>()
+    private val studentList = mutableMapOf<Int, Student>()
 
     override fun addStudent(student: Student) {
-        studentList.put(student.id, student)
+        studentList[student.id] = student
     }
 
     override fun getStudentById(id: Int): Student? {

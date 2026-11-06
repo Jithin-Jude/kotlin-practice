@@ -1,10 +1,11 @@
 package M2.practice_problems.student_management_system.domain
 
+import M2.practice_problems.student_management_system.StudentUtils.calculateGrade
 import M2.practice_problems.student_management_system.model.Student
-import M2.practice_problems.student_management_system.repository.StudentRepositoryImpl
+import M2.practice_problems.student_management_system.model.StudentReport
+import M2.practice_problems.student_management_system.repository.StudentRepository
 
-class StudentService {
-    val studentRepo = StudentRepositoryImpl()
+class StudentService(private val studentRepo: StudentRepository) {
 
     // Register a student.
     fun registerStudent(
@@ -18,13 +19,11 @@ class StudentService {
             marks = marks
         )
 
-        if(!student.validateStudent()){
-            println("Student data is not valid")
-            return
+        require(student.validateStudent()){
+            "Student data is not valid"
         }
 
         studentRepo.addStudent(student)
-        println("Student registration success")
     }
 
     // Validate student details.
@@ -32,7 +31,7 @@ class StudentService {
         val studentIdAlreadyPresent = getAllStudents().map{s -> s.id}.contains(this.id)
         return this.name.isNotEmpty() &&
                 this.name.isNotBlank() &&
-                this.marks >= 0 && !studentIdAlreadyPresent
+                this.marks in 0..100 && !studentIdAlreadyPresent
     }
 
     fun getAllStudents(): List<Student> {
@@ -43,31 +42,12 @@ class StudentService {
         return studentRepo.getStudentById(id)
     }
 
-    fun generateStudentReport() {
-        val allStudents = getAllStudents()
+    fun generateStudentReport(id: Int): StudentReport? {
+        val student = getStudentById(id) ?: return null
 
-        allStudents.forEach{ s ->
-            println("${s.id} | ${s.name} | ${s.marks} | ${calculateGrade(s.marks)}")
-        }
-    }
-
-    fun calculateGrade(mark: Int): String {
-        when(mark) {
-            in 90..100 -> {
-                return "A"
-            }
-            in 75..89 -> {
-                return "B"
-            }
-            in 60..74 -> {
-                return "C"
-            }
-            in 40..59 -> {
-                return "D"
-            }
-            else -> {
-                return "F"
-            }
-        }
+        return StudentReport(
+            name = student.name,
+            grade = calculateGrade(student.marks),
+        )
     }
 }
