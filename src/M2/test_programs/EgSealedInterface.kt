@@ -17,8 +17,8 @@ fun checkDataResponse(state: DataFetchingState) {
             println("Success ${state.data}")
         }
         is DataFetchingState.Error -> {
-            println("Error ${state.message}")
             println("Error ${state.customMessage}")
+            println("Error ${state.message}")
         }
     }
 }
