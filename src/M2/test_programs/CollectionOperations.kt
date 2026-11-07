@@ -31,7 +31,7 @@ fun main() {
         ),
     )
 
-    val list = listOf(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)
+    val list = listOf(1,2,3,4,5,6,7,8,9,10,1,2,3,4,5)
     val set = mutableSetOf(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)
     val map = mutableMapOf(
         1 to "ONE",
@@ -67,12 +67,6 @@ fun main() {
     println("list map(): ${list.map{e -> e * e}}")
     println("set map(): ${set.map{e -> e * e}}")
     println("map map(): ${map.map {(k,v) -> "$k is $v"}}")
-
-    println()
-
-    println("list filter(): ${list.filter{e -> e % 2 == 0}}")
-    println("set filter(): ${set.filter{e -> e % 2 == 0}}")
-    println("map filter(): ${map.filter{(k,v) -> k > 5}}")
 
     println()
 
@@ -131,6 +125,10 @@ fun main() {
     for (e in associatedStudents) {
         println(e)
     }
+
+    println()
+
+    println("list distinct(): ${list.distinct()}")
 }
 
 data class ResortStudent(
