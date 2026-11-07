@@ -4,7 +4,7 @@ package M2.test_programs
 
 fun main(){
     val today = DaysOfWeek.TUE
-    println(DaysOfWeek.values())
+    println(DaysOfWeek.values().joinToString())
     println(DaysOfWeek.entries)
     println(DaysOfWeek.valueOf("Fri"))
     println(DaysOfWeek.entries.contains(DaysOfWeek.Fri))

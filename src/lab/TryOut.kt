@@ -3,15 +3,11 @@ package lab
 // TryOut
 
 fun main() {
+    val a: Any = 100
 
-    // Upcasting
-//    val dog: Dog = Dog()
-//    val animal: Animal = dog
+    val b = a as? String
 
-    // Down casting
-//    val animal: Animal = Dog()
-//    val dog: Dog = animal as Dog
-
+    println(b)
 
     println("Hi")
 }
