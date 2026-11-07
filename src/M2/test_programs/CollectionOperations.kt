@@ -129,6 +129,22 @@ fun main() {
     println()
 
     println("list distinct(): ${list.distinct()}")
+    println("set distinct(): ${list.distinct()}")
+    println("map distinct(): ${map.values.distinct()}")
+
+    val l1 = listOf(1,2,3,4,5)
+    val l2 = listOf("A","B","C","D")
+    val lZip = l1.zip(l2)
+    println("list zip(): $lZip")
+    val (unZipL1, unZipL2) = lZip.unzip()
+    println("list unzip(): $unZipL1 | $unZipL2")
+    val unZipL3 = lZip.unzip()
+    println("list unzip(): $unZipL3")
+
+    val l4Partition = l1.partition{ e -> e % 2 == 0}
+    println("list unzip(): $l4Partition")
+    val (l5Partition, l6Partition) = l1.partition{ e -> e % 2 == 0}
+    println("list partition(): $l5Partition | $l6Partition")
 }
 
 data class ResortStudent(
