@@ -23,7 +23,7 @@ fun main() {
         {a: Double, b: Double -> a / b },
         {a: Double, b: Double -> a % b }))
 
-    openActivity(onCLick = { value -> println(value) })
+    openActivity(onCLick = { value: String -> println(value) })
 
     println()
 
@@ -77,7 +77,7 @@ fun openActivity(onCLick: (value: String) -> Unit) {
 }
 
 // Higher-order function returning another function
-fun funA(str: String): (String) -> String {
+fun funA(str: String): (str2: String) -> String {
     return {word -> "$str to $word funA"}
 }
 
