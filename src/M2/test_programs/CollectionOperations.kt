@@ -132,7 +132,7 @@ fun main() {
     println("set distinct(): ${list.distinct()}")
     println("map distinct(): ${map.values.distinct()}")
 
-    val l1 = listOf(1,2,3,4,5)
+    val l1 = listOf(1,2,3)
     val l2 = listOf("A","B","C","D")
     val lZip = l1.zip(l2)
     println("list zip(): $lZip")
