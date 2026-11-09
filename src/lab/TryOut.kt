@@ -1,15 +1,9 @@
 package lab
 
-data class Student(val name: String, val grade: Int)
 fun main() {
-    println(myAddFun(2, 5))
-
-    myFun1(
-        onClick = { value: String -> println(value) }
-    )
+    println("RESULT: ${calc(5, 2, {a, b -> a * b})}")
 }
-val myAddFun: (num1: Int, num2: Int) -> Int = {a: Int, b: Int -> a + b}
 
-fun myFun1(onClick: (value: String) -> Unit): (product: Int) -> String {
-    return {v -> "$v"}
+fun <T, R> calc(a: T, b: T, operation: (T, T) -> R): R {
+    return operation(a, b)
 }
