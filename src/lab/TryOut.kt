@@ -1,1 +1,5 @@
 package lab
+
+fun main() {
+
+}
