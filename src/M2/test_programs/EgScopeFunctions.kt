@@ -41,7 +41,7 @@ fun main() {
     println()
 
     // run
-    // Run some code and return its result
+    // Run some code and return the result
     val resultRun = s1?.run {
         marks = 85.0
         "Run Done"
