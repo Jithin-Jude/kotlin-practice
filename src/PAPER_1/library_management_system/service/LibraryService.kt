@@ -19,6 +19,10 @@ class LibraryService(
         category: BookCategory,
         quantity: Int,
     ) {
+        require(!getAllBooks().map { m -> m.bookId }.contains(bookId)) {
+            "Book Id already exists!"
+        }
+
         val book = LibraryBook.createBook(
             bookId = bookId,
             title = title,
@@ -88,6 +92,10 @@ class LibraryService(
         name: String,
         isStudent: String,
     ) {
+        require(!getAllMembers().map { m -> m.id }.contains(memberId)) {
+            "Member Id already exists!"
+        }
+
         val member: LibraryUser = if(isStudent.lowercase() == "y") {
             LibraryStudent(
                 id = memberId,
