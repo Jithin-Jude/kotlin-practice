@@ -3,12 +3,14 @@ package PAPER_1.library_management_system
 import PAPER_1.library_management_system.model.BookCategory
 import PAPER_1.library_management_system.service.LibraryService
 import PAPER_1.library_management_system.repository.BookRepositoryImpl
+import PAPER_1.library_management_system.repository.MemberRepositoryImpl
 
 fun main() {
     var option: Int = -1
 
     val bookRepository = BookRepositoryImpl()
-    val libraryService = LibraryService(bookRepository)
+    val memberRepository = MemberRepositoryImpl()
+    val libraryService = LibraryService(bookRepository, memberRepository)
 
     do {
         println()
@@ -78,13 +80,42 @@ fun processOptions(option: Int, libraryService: LibraryService) {
                 println("Something went wrong: ${e.message}")
             }
         }
+        2 -> {
+            try {
+                println("Enter Member ID: ")
+                val id: Int = readln().toInt()
+
+                println("Enter Member Name: ")
+                val name: String = readln()
+
+                println("Is Student (y/n): ")
+                val isStudent: String = readln()
+
+                libraryService.registerMember(
+                    memberId = id,
+                    name = name,
+                    isStudent = isStudent,
+                )
+
+                println("\nMember added successfully!\n")
+            } catch (e: Exception) {
+                println("Something went wrong: ${e.message}")
+            }
+        }
         3 -> {
             libraryService.getAllBooks().forEach { book ->
                 println("${book.bookId} | ${book.title} | ${book.author} | ${book.quantity} | ${book.category}")
             }
         }
+        7 -> {
+            libraryService.getAllMembers().forEach { member ->
+                println("${member.id} | ${member.name} | ${member.maximumBorrowLimit} | ${member.borrowedBooks}")
+            }
+        }
         else -> {
-            println("\n Invalid Option \n")
+            if (option != 0) {
+                println("\n Invalid Option \n")
+            }
         }
     }
 }

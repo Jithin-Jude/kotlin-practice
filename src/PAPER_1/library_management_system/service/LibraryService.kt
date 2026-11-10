@@ -2,9 +2,16 @@ package PAPER_1.library_management_system.service
 
 import PAPER_1.library_management_system.model.BookCategory
 import PAPER_1.library_management_system.model.LibraryBook
+import PAPER_1.library_management_system.model.LibraryStudent
+import PAPER_1.library_management_system.model.LibraryTeacher
+import PAPER_1.library_management_system.model.LibraryUser
 import PAPER_1.library_management_system.repository.BookRepository
+import PAPER_1.library_management_system.repository.MemberRepository
 
-class LibraryService(val bookRepository: BookRepository) {
+class LibraryService(
+    val bookRepository: BookRepository,
+    val memberRepository: MemberRepository,
+    ) {
     fun addBook(
         bookId: Int,
         title: String,
@@ -24,5 +31,33 @@ class LibraryService(val bookRepository: BookRepository) {
 
     fun getAllBooks(): List<LibraryBook> {
         return bookRepository.getAllBooks()
+    }
+
+    // ===
+
+    fun registerMember(
+        memberId: Int,
+        name: String,
+        isStudent: String,
+    ) {
+        val member: LibraryUser = if(isStudent.lowercase() == "y") {
+            LibraryStudent(
+                id = memberId,
+                name = name,
+                borrowedBooks = mutableListOf(),
+            )
+        } else {
+            LibraryTeacher(
+                id = memberId,
+                name = name,
+                borrowedBooks = mutableListOf(),
+            )
+        }
+
+        memberRepository.registerMember(member)
+    }
+
+    fun getAllMembers(): List<LibraryUser> {
+        return memberRepository.getAllMembers()
     }
 }
