@@ -5,7 +5,7 @@ data class LibraryBook(
     val title: String,
     val author: String,
     val category: BookCategory,
-    val quantity: Int,
+    var quantity: Int,
 ) {
     companion object {
         fun createBook(

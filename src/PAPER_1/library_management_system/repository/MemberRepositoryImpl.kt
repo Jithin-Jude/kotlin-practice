@@ -1,5 +1,6 @@
 package PAPER_1.library_management_system.repository
 
+import PAPER_1.library_management_system.model.LibraryBook
 import PAPER_1.library_management_system.model.LibraryUser
 
 class MemberRepositoryImpl: MemberRepository {
@@ -11,5 +12,13 @@ class MemberRepositoryImpl: MemberRepository {
 
     override fun getAllMembers(): List<LibraryUser> {
         return membersDb
+    }
+
+    override fun updateMemberBorrowedBooks(memberId: Int, book: LibraryBook?) {
+        membersDb.find { m -> m.id == memberId }?.apply {
+            if (book != null) {
+                borrowedBooks.add(book)
+            }
+        }
     }
 }

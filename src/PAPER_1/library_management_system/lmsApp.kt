@@ -119,6 +119,21 @@ fun processOptions(option: Int, libraryService: LibraryService) {
                 println("Something went wrong: ${e.message}")
             }
         }
+        5 -> {
+            try {
+                println("Enter Member ID: ")
+                val memberId: Int = readln().toInt()
+
+                println("Enter Book ID: ")
+                val bookId: Int = readln().toInt()
+
+                val res = libraryService.borrowBook(memberId = memberId, bookId = bookId)
+                println(res)
+
+            } catch (e: Exception) {
+                println("Something went wrong: ${e.message}")
+            }
+        }
         7 -> {
             libraryService.getAllMembers().forEach { member ->
                 println("${member.id} | ${member.name} | ${member.maximumBorrowLimit} | ${member.borrowedBooks}")

@@ -51,6 +51,21 @@ class LibraryService(
         }
     }
 
+    fun borrowBook(memberId: Int, bookId: Int): String {
+        require(getAllMembers().map { m -> m.id }.contains(memberId)) {
+            "Member not found!"
+        }
+        require(getAllBooks().map { b -> b.bookId }.contains(bookId)) {
+            "Book not found!"
+        }
+
+        val borrowedBook = bookRepository.decrementBookAvailability(bookId = bookId)
+        memberRepository.updateMemberBorrowedBooks(memberId = memberId, book = borrowedBook)
+
+        return "Book borrowed successfully!\nRemaining copies: ${borrowedBook?.quantity}"
+
+    }
+
     // ===
 
     fun registerMember(

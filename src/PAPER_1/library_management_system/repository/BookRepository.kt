@@ -5,4 +5,7 @@ import PAPER_1.library_management_system.model.LibraryBook
 interface BookRepository {
     fun addBook(book: LibraryBook)
     fun getAllBooks(): List<LibraryBook>
+
+    fun incrementBookAvailability(bookId: Int)
+    fun decrementBookAvailability(bookId: Int): LibraryBook?
 }

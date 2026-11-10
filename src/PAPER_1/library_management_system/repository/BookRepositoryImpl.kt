@@ -12,4 +12,17 @@ class BookRepositoryImpl: BookRepository {
     override fun getAllBooks(): List<LibraryBook> {
         return libBookDb
     }
+
+    override fun incrementBookAvailability(bookId: Int) {
+        libBookDb.find { b -> b.bookId == bookId }?.apply {
+            quantity++
+        }
+    }
+
+    override fun decrementBookAvailability(bookId: Int): LibraryBook? {
+        val bookFound = libBookDb.find { b -> b.bookId == bookId }?.apply {
+            quantity--
+        }
+        return bookFound
+    }
 }
