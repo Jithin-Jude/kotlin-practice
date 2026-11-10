@@ -66,6 +66,21 @@ class LibraryService(
 
     }
 
+    fun returnBook(memberId: Int, bookId: Int): String {
+        require(getAllMembers().map { m -> m.id }.contains(memberId)) {
+            "Member not found!"
+        }
+        require(getAllBooks().map { b -> b.bookId }.contains(bookId)) {
+            "Book not found!"
+        }
+
+        bookRepository.incrementBookAvailability(bookId = bookId)
+        memberRepository.removeMemberBorrowedBooks(memberId = memberId, bookId = bookId)
+
+        return "Book returned successfully!"
+
+    }
+
     // ===
 
     fun registerMember(

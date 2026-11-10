@@ -21,4 +21,10 @@ class MemberRepositoryImpl: MemberRepository {
             }
         }
     }
+
+    override fun removeMemberBorrowedBooks(memberId: Int, bookId: Int) {
+        membersDb.find { m -> m.id == memberId }?.apply {
+            borrowedBooks.remove(borrowedBooks.find { b -> b.bookId == bookId })
+        }
+    }
 }

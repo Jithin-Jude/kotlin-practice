@@ -8,4 +8,5 @@ interface MemberRepository {
     fun getAllMembers(): List<LibraryUser>
 
     fun updateMemberBorrowedBooks(memberId: Int, book: LibraryBook?)
+    fun removeMemberBorrowedBooks(memberId: Int, bookId: Int)
 }
