@@ -33,6 +33,24 @@ class LibraryService(
         return bookRepository.getAllBooks()
     }
 
+    fun searchBook(keyWord: String): String {
+        var searchResult: LibraryBook? = null
+
+        for (book in getAllBooks()) {
+            if (book.title.contains(keyWord) ||
+                book.author.contains(keyWord)) {
+                searchResult = book
+                break
+            }
+        }
+
+        if(searchResult != null) {
+            return "Book found: ${searchResult.title} | ${searchResult.author} | ${searchResult.quantity}"
+        } else {
+            return "Book not found!"
+        }
+    }
+
     // ===
 
     fun registerMember(

@@ -107,6 +107,18 @@ fun processOptions(option: Int, libraryService: LibraryService) {
                 println("${book.bookId} | ${book.title} | ${book.author} | ${book.quantity} | ${book.category}")
             }
         }
+        4 -> {
+            try {
+                println("Search keyword please: ")
+                val keyword: String = readln()
+
+                val res = libraryService.searchBook(keyWord = keyword,)
+                println(res)
+
+            } catch (e: Exception) {
+                println("Something went wrong: ${e.message}")
+            }
+        }
         7 -> {
             libraryService.getAllMembers().forEach { member ->
                 println("${member.id} | ${member.name} | ${member.maximumBorrowLimit} | ${member.borrowedBooks}")
